@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -15,8 +17,11 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
-  title: "PT Bahran Poutra Pandawa | Supplier & Kontraktor Bangunan",
+  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  title: {
+    default: "PT Bahran Poutra Pandawa | Supplier & Kontraktor Bangunan",
+    template: "%s | PT Bahran Poutra Pandawa",
+  },
   description:
     "PT Bahran Poutra Pandawa merupakan perusahaan yang bergerak di bidang jasa supplier dan kontraktor bangunan.",
   keywords: [
@@ -30,13 +35,17 @@ export const metadata: Metadata = {
     title: "PT Bahran Poutra Pandawa | Supplier & Kontraktor Bangunan",
     description:
       "PT Bahran Poutra Pandawa merupakan perusahaan yang bergerak di bidang jasa supplier dan kontraktor bangunan.",
-    url: "https://example.com",
+    url: siteUrl,
     siteName: "PT Bahran Poutra Pandawa",
     locale: "id_ID",
     type: "website",
   },
   icons: {
     icon: "/favicon.ico",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

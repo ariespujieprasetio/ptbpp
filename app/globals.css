@@ -21,6 +21,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 76px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -44,6 +48,29 @@ img {
 
 * {
   box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(227, 6, 19, 0.65);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 0.5rem;
+  background: white;
+  padding: 0.75rem 1rem;
+  color: #111111;
+  font-weight: 700;
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 ::selection {

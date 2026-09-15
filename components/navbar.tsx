@@ -30,7 +30,7 @@ function LogoMark() {
         <div className="text-[0.64rem] font-semibold tracking-[0.22em] text-white/90 uppercase">
           BPP
         </div>
-        <div className="mt-1 text-[0.92rem] font-semibold text-white">
+        <div className="mt-1 hidden text-[0.92rem] font-semibold text-white min-[430px]:block">
           PT Bahran Poutra Pandawa
         </div>
       </div>
@@ -53,7 +53,25 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileOpen]);
+
   return (
+    <>
+    <a href="#main-content" className="skip-link">Lewati ke konten utama</a>
     <header
       className={[
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
@@ -62,7 +80,7 @@ export default function Navbar() {
           : "bg-transparent",
       ].join(" ")}
     >
-      <nav className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Navigasi utama" className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="#home" aria-label="Beranda PT Bahran Poutra Pandawa" className="flex items-center">
           <LogoMark />
         </Link>
@@ -93,8 +111,9 @@ export default function Navbar() {
 
         <button
           type="button"
-          aria-label="Buka menu navigasi"
           aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
+          aria-label={mobileOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
           onClick={() => setMobileOpen((value) => !value)}
           className="inline-flex items-center justify-center rounded-[8px] border border-white/15 bg-white/5 p-2.5 text-white transition-colors duration-200 hover:bg-white/10 lg:hidden"
         >
@@ -103,7 +122,7 @@ export default function Navbar() {
       </nav>
 
       {mobileOpen ? (
-        <div className="border-t border-white/10 bg-[#111111]/96 px-4 py-4 backdrop-blur-sm lg:hidden">
+        <div id="mobile-navigation" className="border-t border-white/10 bg-[#111111]/96 px-4 py-4 backdrop-blur-sm lg:hidden">
           <div className="space-y-2">
             {navItems.map((item) => (
               <Link
@@ -127,5 +146,6 @@ export default function Navbar() {
         </div>
       ) : null}
     </header>
+    </>
   );
 }
