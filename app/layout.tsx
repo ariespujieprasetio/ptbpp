@@ -41,7 +41,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [{ url: "/images/logo-bpp.jpeg", type: "image/jpeg" }],
+    shortcut: "/images/logo-bpp.jpeg",
   },
   robots: {
     index: true,

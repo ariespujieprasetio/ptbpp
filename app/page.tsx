@@ -11,6 +11,7 @@ import ContactCta from "@/components/contact-cta";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import RevealProvider from "@/components/reveal-provider";
+import BackToTop from "@/components/back-to-top";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         <ContactCta />
         <Contact />
       </main>
+      <BackToTop />
       <Footer />
     </>
   );

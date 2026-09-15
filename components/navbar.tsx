@@ -14,10 +14,10 @@ const navItems = [
   { label: "Kontak", href: "#contact" },
 ];
 
-function LogoMark() {
+function LogoMark({ compact }: { compact: boolean }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="relative h-10 w-10 overflow-hidden rounded-[8px] border border-white/15 bg-white/5">
+      <div className={["relative overflow-hidden rounded-[8px] border border-white/15 bg-white/5 transition-all duration-300", compact ? "h-9 w-9" : "h-10 w-10"].join(" ")}>
         <Image
           src="/images/logo-bpp.jpeg"
           alt="Logo PT Bahran Poutra Pandawa"
@@ -30,7 +30,7 @@ function LogoMark() {
         <div className="text-[0.64rem] font-semibold tracking-[0.22em] text-white/90 uppercase">
           BPP
         </div>
-        <div className="mt-1 hidden text-[0.92rem] font-semibold text-white min-[430px]:block">
+        <div className={["hidden font-semibold text-white transition-all duration-300 min-[430px]:block", compact ? "mt-0.5 text-[0.84rem]" : "mt-1 text-[0.92rem]"].join(" ")}>
           PT Bahran Poutra Pandawa
         </div>
       </div>
@@ -41,6 +41,7 @@ function LogoMark() {
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +52,26 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.querySelector<HTMLElement>(item.href))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+        if (visible?.target.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-25% 0px -60%", threshold: [0, 0.25, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -80,9 +101,9 @@ export default function Navbar() {
           : "bg-transparent",
       ].join(" ")}
     >
-      <nav aria-label="Navigasi utama" className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Navigasi utama" className={["mx-auto flex max-w-[1280px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8", isScrolled ? "h-16" : "h-[76px]"].join(" ")}>
         <Link href="#home" aria-label="Beranda PT Bahran Poutra Pandawa" className="flex items-center">
-          <LogoMark />
+          <LogoMark compact={isScrolled} />
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
@@ -90,9 +111,13 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative text-sm font-medium text-white/80 transition-colors duration-200 hover:text-white"
+              aria-current={activeSection === item.href.slice(1) ? "location" : undefined}
+              className={[
+                "relative text-sm font-medium transition-colors duration-200 hover:text-white",
+                activeSection === item.href.slice(1) ? "text-white" : "text-white/70",
+              ].join(" ")}
             >
-              <span className="relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[#E30613] after:transition-transform after:duration-200 hover:after:scale-x-100">
+              <span className={["relative after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:origin-left after:bg-[#E30613] after:transition-transform after:duration-200 hover:after:scale-x-100", activeSection === item.href.slice(1) ? "after:scale-x-100" : "after:scale-x-0"].join(" ")}>
                 {item.label}
               </span>
             </Link>
@@ -129,7 +154,11 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block rounded-[8px] border border-white/10 px-4 py-3 text-sm font-medium text-white/80 transition-colors hover:border-[#E30613]/60 hover:text-white"
+                aria-current={activeSection === item.href.slice(1) ? "location" : undefined}
+                className={[
+                  "block rounded-[8px] border px-4 py-3 text-sm font-medium transition-colors hover:border-[#E30613]/60 hover:text-white",
+                  activeSection === item.href.slice(1) ? "border-[#E30613]/60 bg-[#E30613]/10 text-white" : "border-white/10 text-white/80",
+                ].join(" ")}
               >
                 {item.label}
               </Link>
