@@ -7,7 +7,7 @@ export default function Projects() {
   return (
     <section id="projects" className="bg-white py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.65fr] lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.65fr] lg:items-end" data-reveal>
           <div>
           <p className="mb-4 text-[0.7rem] font-semibold tracking-[0.2em] text-[#E30613] uppercase">
             PROYEK &amp; PEKERJAAN
@@ -21,10 +21,11 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-12 xl:auto-rows-[300px]">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-12 xl:auto-rows-[300px]" data-reveal-grid>
           {projects.map(({ category, title, description, image }, index) => (
             <article
               key={title}
+              data-reveal
               className={[
                 "group relative min-h-[300px] overflow-hidden rounded-[24px] border border-[#E5E5E5] bg-[#F6F6F4] shadow-[0_18px_45px_rgba(17,17,17,0.06)]",
                 index === 0 ? "md:col-span-2 md:min-h-[480px] xl:col-span-7 xl:row-span-2 xl:min-h-0" : "xl:col-span-5 xl:min-h-0",

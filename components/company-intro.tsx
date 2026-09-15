@@ -12,7 +12,7 @@ export default function CompanyIntro() {
   return (
     <section id="about" className="bg-white py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
-        <div className="relative">
+        <div className="relative" data-reveal="left">
           <div className="relative overflow-hidden rounded-[28px] border border-[#E5E5E5] bg-[#F6F6F4] shadow-[0_24px_60px_rgba(17,17,17,0.08)]">
             <div className="relative h-[520px] w-full">
               <Image
@@ -32,7 +32,7 @@ export default function CompanyIntro() {
           </div>
         </div>
 
-        <div>
+        <div data-reveal="right">
           <p className="mb-4 text-[0.7rem] font-semibold tracking-[0.2em] text-[#E30613] uppercase">
             TENTANG KAMI
           </p>

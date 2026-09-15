@@ -25,7 +25,7 @@ export default function Team() {
   return (
     <section id="team" className="bg-[#F6F6F4] py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end" data-reveal>
           <div>
           <p className="mb-4 text-[0.7rem] font-semibold tracking-[0.2em] text-[#E30613] uppercase">
             TIM KAMI
@@ -40,13 +40,14 @@ export default function Team() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4" data-reveal-grid>
           {team.map((member) => {
             const hasFailedImage = Boolean(failedImages[member.nip]);
 
             return (
               <article
                 key={member.nip}
+                data-reveal
                 className="group overflow-hidden rounded-[22px] border border-[#E5E5E5] bg-white shadow-[0_12px_30px_rgba(17,17,17,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(17,17,17,0.08)]"
               >
                 <div className="relative aspect-[4/4.5] overflow-hidden bg-[#eeeeee]">

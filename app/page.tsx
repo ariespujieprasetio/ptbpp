@@ -10,10 +10,12 @@ import Team from "@/components/team";
 import ContactCta from "@/components/contact-cta";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import RevealProvider from "@/components/reveal-provider";
 
 export default function Home() {
   return (
     <>
+      <RevealProvider />
       <Navbar />
       <main id="main-content">
         <Hero />

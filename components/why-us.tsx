@@ -25,7 +25,7 @@ export default function WhyUs() {
   return (
     <section className="bg-[#111111] py-24 text-white sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div>
+        <div data-reveal="left">
           <p className="mb-4 text-[0.7rem] font-semibold tracking-[0.2em] text-[#ff6a6a] uppercase">
             MENGAPA BPP
           </p>
@@ -39,10 +39,11 @@ export default function WhyUs() {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4" data-reveal-grid>
           {features.map(({ number, title, description }) => (
             <article
               key={number}
+              data-reveal="right"
               className="group rounded-[20px] border border-[#2a2a2a] bg-[#171717] p-5 transition-all duration-300 hover:border-[#E30613]/70 hover:bg-[#1b1b1b]"
             >
               <div className="flex gap-5">

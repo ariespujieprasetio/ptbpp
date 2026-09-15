@@ -32,16 +32,16 @@ export default function Process() {
   return (
     <section className="bg-[#F6F6F4] py-24 sm:py-28" aria-labelledby="process-title">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div id="process-title">
+        <div id="process-title" data-reveal>
           <SectionHeading
             label="CARA KAMI BEKERJA"
             title="Proses yang Jelas dari Awal"
             description="Setiap kebutuhan ditangani melalui tahapan yang terarah agar komunikasi dan pelaksanaan tetap selaras."
           />
         </div>
-        <ol className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <ol className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4" data-reveal-grid>
           {steps.map(({ icon: Icon, number, title, description }) => (
-            <li key={number} className="relative overflow-hidden rounded-[22px] border border-[#E5E5E5] bg-white p-6">
+            <li key={number} data-reveal className="relative overflow-hidden rounded-[22px] border border-[#E5E5E5] bg-white p-6">
               <span className="absolute right-5 top-3 font-display text-5xl font-extrabold text-[#111111]/[0.05]">{number}</span>
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E30613]/10 text-[#E30613]">
                 <Icon size={22} aria-hidden="true" />

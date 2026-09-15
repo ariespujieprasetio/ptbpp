@@ -12,7 +12,7 @@ export default function ContactCta() {
       <div className="absolute right-10 top-10 h-20 w-20 rotate-12 border-t-2 border-r-2 border-black/30" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between" data-reveal>
           <div className="max-w-2xl">
             <p className="mb-4 text-[0.7rem] font-semibold tracking-[0.2em] text-white/80 uppercase">
               BUTUH MITRA UNTUK PROYEK ANDA?

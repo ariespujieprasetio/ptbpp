@@ -8,10 +8,11 @@ const capabilities = [
 export default function Stats() {
   return (
     <section className="bg-[#111111] py-4 text-white" aria-label="Cakupan perusahaan">
-      <div className="mx-auto grid max-w-7xl divide-y divide-white/10 px-4 sm:px-6 md:grid-cols-2 md:divide-x md:divide-y-0 lg:px-8 xl:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl divide-y divide-white/10 px-4 sm:px-6 md:grid-cols-2 md:divide-x md:divide-y-0 lg:px-8 xl:grid-cols-4" data-reveal-grid>
         {capabilities.map(({ number, label, value }) => (
           <div
             key={label}
+            data-reveal
             className="group flex items-center gap-4 px-3 py-6 md:px-6"
           >
             <span className="font-display text-3xl font-extrabold text-[#E30613] transition-transform duration-300 group-hover:-translate-y-0.5">{number}</span>

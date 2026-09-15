@@ -7,16 +7,19 @@ export default function Services() {
   return (
     <section id="services" className="bg-[#F6F6F4] py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="LAYANAN KAMI"
-          title="Solusi untuk Kebutuhan Proyek Anda"
-          description="Dari kebutuhan material hingga pelaksanaan pekerjaan konstruksi, kami siap menjadi mitra dalam mendukung proyek Anda."
-        />
+        <div data-reveal>
+          <SectionHeading
+            label="LAYANAN KAMI"
+            title="Solusi untuk Kebutuhan Proyek Anda"
+            description="Dari kebutuhan material hingga pelaksanaan pekerjaan konstruksi, kami siap menjadi mitra dalam mendukung proyek Anda."
+          />
+        </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4" data-reveal-grid>
           {services.map(({ icon: Icon, title, description }) => (
             <article
               key={title}
+              data-reveal
               className="group relative rounded-[22px] border border-[#E5E5E5] bg-white p-6 shadow-[0_14px_35px_rgba(17,17,17,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#E30613]/50 hover:shadow-[0_18px_28px_rgba(227,6,19,0.08)]"
             >
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#E30613] text-white shadow-sm transition-transform duration-300 group-hover:scale-105">

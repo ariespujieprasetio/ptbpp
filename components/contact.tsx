@@ -74,7 +74,7 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-[#F6F6F4] py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-        <div className="relative overflow-hidden rounded-[28px] bg-[#111111] p-6 text-white sm:p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-[28px] bg-[#111111] p-6 text-white sm:p-8 lg:p-10" data-reveal="left">
           <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-white/10" />
           <div className="absolute -bottom-20 -left-20 h-52 w-52 rounded-full bg-[#E30613]/10 blur-2xl" />
           <div className="relative">
@@ -120,7 +120,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="rounded-[28px] border border-[#E5E5E5] bg-white p-5 shadow-[0_18px_55px_rgba(17,17,17,0.06)] sm:p-8 lg:p-10">
+        <div className="rounded-[28px] border border-[#E5E5E5] bg-white p-5 shadow-[0_18px_55px_rgba(17,17,17,0.06)] sm:p-8 lg:p-10" data-reveal="right">
           <div className="mb-7">
             <p className="text-xs font-bold tracking-[0.18em] text-[#E30613] uppercase">Formulir Konsultasi</p>
             <h3 className="mt-2 text-2xl font-extrabold text-[#111111]">Ceritakan kebutuhan proyek Anda</h3>
