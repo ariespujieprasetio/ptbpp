@@ -9,5 +9,6 @@ export const company: CompanyInfo = {
   whatsapp: "",
   phone: "",
   email: "",
-  address: "",
+  address:
+    "Perumahan Sinar Pondok Benda, Jl. Saron IV No. 130, RT.009/RW.007, Jatirasa, Kec. Jatiasih, Kota Bekasi, Jawa Barat 17510",
 };

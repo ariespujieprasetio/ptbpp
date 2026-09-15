@@ -13,6 +13,9 @@ const emptyContact = {
 
 export default function Contact() {
   const hasContactChannel = Boolean(company.whatsapp || company.email);
+  const mapsQuery = encodeURIComponent(company.address);
+  const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
   const [form, setForm] = useState({
     name: "",
     whatsapp: "",
@@ -117,6 +120,28 @@ export default function Contact() {
               <dd className="mt-2 text-sm font-medium leading-6 text-white/85 break-words">{emptyContact.email}</dd>
             </div>
           </dl>
+
+          {company.address ? (
+            <div className="mt-4 overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.04]">
+              <iframe
+                src={mapsEmbedUrl}
+                title="Lokasi PT Bahran Poutra Pandawa"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-56 w-full border-0 grayscale-[0.15] sm:h-64"
+              />
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 border-t border-white/10 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                <MapPin size={16} aria-hidden="true" />
+                Buka di Google Maps
+              </a>
+            </div>
+          ) : null}
           </div>
         </div>
 
